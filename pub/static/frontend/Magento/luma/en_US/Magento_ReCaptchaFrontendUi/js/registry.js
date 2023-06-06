@@ -1,0 +1,1 @@
+/var/www/html/magento2.4.5-p2/vendor/magento/module-re-captcha-frontend-ui/view/frontend/web/js/registry.js

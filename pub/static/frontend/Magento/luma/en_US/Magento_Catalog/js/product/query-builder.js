@@ -1,0 +1,1 @@
+/var/www/html/magento2.4.5-p2/vendor/magento/module-catalog/view/frontend/web/js/product/query-builder.js

@@ -1,0 +1,1 @@
+/var/www/html/magento2.4.5-p2/vendor/magento/module-page-builder-admin-analytics/view/adminhtml/web/js/page-builder/event-builder.js
