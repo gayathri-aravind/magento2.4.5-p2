@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Create Layout - example</title> <!-- TITLE of the website TAB-->
+    </head>
+    <body>
+        <referenceBlock name="page.main.title">
+            <action method="setPageTitle">
+                <argument name="page_title" xsi:type="string">Something Else</argument> <!-- TITLE of the website PAGE-->
+            </action>
+        </referenceBlock>
+        <referenceContainer name="content">
+            <block name="layout_example" class="Magento\Framework\View\Element\Template" template="Training_LayoutExample::content.phtml" />
+        </referenceContainer>
+    </body>
+</page>
