@@ -22,14 +22,15 @@ class Index implements ActionInterface
     public function execute()
     {
         // $this->resultFactory->create() - creates a new instance of the Magento\Framework\View\Result\PageFactory class.
+        /*
         $result = $this->resultFactory->create();
         $result->getConfig()->getTitle()->set("Dynamic Webpage TAB content goes here");
-
-        /*
-            $result->getLayout() will access the entire content of the layout file "layout_example_layout_index.xml" and then getBlock('page.main.title') points to the <referenceBlock name="page.main.title"> .. . </referenceBlock> and then overrides the page title
-        */
+        // $result->getLayout() will access the entire content of the layout file "layout_example_layout_index.xml" and then getBlock('page.main.title') points to the <referenceBlock name="page.main.title"> .. . </referenceBlock> and then overrides the page title
         $result->getLayout()->getBlock('page.main.title')->setPageTitle("Dynamic Webpage TITLE content goes here");
         return $result;
+        */
+
+        return $this->resultFactory->create();
 
     }
 }

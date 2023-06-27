@@ -4,13 +4,17 @@
         <title>Create Layout - example</title> <!-- TITLE of the website TAB-->
     </head>
     <body>
-        <referenceBlock name="page.main.title">
-            <action method="setPageTitle">
-                <argument name="page_title" xsi:type="string">Something Else</argument> <!-- TITLE of the website PAGE-->
-            </action>
-        </referenceBlock>
         <referenceContainer name="content">
-            <block name="layout_example" class="Magento\Framework\View\Element\Template" template="Training_LayoutExample::content.phtml" />
+            <block name="layout_example" class="Training\LayoutExample\Block\Layout\Index" template="Training_LayoutExample::content.phtml">
+                <block name="layout_note" class="Training\LayoutExample\Block\Layout\Note" template="Training_LayoutExample::note.phtml"/>
+                <!-- You can give any value for the name="" attribute -->
+                <block name="cms_block_example" class="Magento\Cms\Block\Block">
+                    <arguments>
+                                <!-- <argument name="block_id" xsi:type="string">Identifier given while creating the block in admin</argument> -->
+                        <argument name="block_id" xsi:type="string">cms_block_example</argument>
+                    </arguments>
+                </block>
+            </block>
         </referenceContainer>
     </body>
 </page>
