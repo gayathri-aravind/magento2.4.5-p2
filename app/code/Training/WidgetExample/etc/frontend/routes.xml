@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="standard">
+    <!-- id="widget_example" will be used in LAYOUTS and frontName="widget_example" is the one used next to the domain name like, http://magento-local/<frontName> -->
+        <route id="widget_example" frontName="widget_example">
+            <module name="training_widgetexample"/> <!-- <module name="<here, you can give any name>" /> like myfoo, example, .... do not confuse that this should be named like '<vendorname>_<modulename>'-->
+        </route>
+    </router>
+</config>
