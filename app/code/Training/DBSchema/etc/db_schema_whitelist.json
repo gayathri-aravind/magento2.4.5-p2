@@ -1,0 +1,14 @@
+{
+    "blog_declarative_schema": {
+        "column": {
+            "blog_id": true,
+            "blog_title": true,
+            "blog_name": true,
+            "blog_description": true,
+            "created_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}
