@@ -10,5 +10,19 @@
         "constraint": {
             "PRIMARY": true
         }
+    },
+    "blog_declarative_schema_new": {
+        "column": {
+            "blog_id": true,
+            "blog_title": true,
+            "blog_name": true,
+            "blog_description": true,
+            "created_at": true,
+            "updated_at": true,
+            "blog_description_new": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
     }
 }

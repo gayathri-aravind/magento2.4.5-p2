@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
 <!-- UNSIGNED only stores positive numbers (or zero). On the other hand, signed can store negative numbers (i.e., may have a negative sign). -->
+<!-- <table name="blog_declarative_schema" resource="default" engine="innodb" comment="DBSchema Learn"> -->
+<table name="blog_declarative_schema_new" onCreate="migrateDataFromAnotherTable(blog_declarative_schema)" >
+      <column xsi:type="int" name="blog_id" unsigned="true" nullable="false" identity="true" comment="Blog ID" />
+      <column xsi:type="varchar" name="blog_title" nullable="false" length="255" comment="Bitlelog T" />
+      <column xsi:type="varchar" name="blog_name" nullable="false" length="255" comment="Blog Name" />
+      <!-- <column xsi:type="varchar" name="blog_description" nullable="false" length="255" comment="Blog Description" /> -->
+      <!-- Changed the datatype from "varchar" to "text" -->
+      <column xsi:type="text" name="blog_description_new" onCreate="migrateDataFrom(blog_description)" nullable="false" comment="Blog Description" />
+      <column xsi:type="timestamp" name="created_at" nullable="false" comment="Created At" />
+      <!-- <column xsi:type="timestamp" name="updated_at" nullable="false" comment="Updated At" disabled="false" /> -->
+      <!-- <column name="created_at" nullable="false" xsi:type="datetime" default="CURRENT_TIMESTAMP" on_update="false"/>
+      <column name="updated_at" nullable="true" xsi:type="datetime" default="CURRENT_TIMESTAMP" on_update="true"/> -->
+      <constraint xsi:type="primary" referenceId="PRIMARY">
+         <column name="blog_id" />
+      </constraint>
+</table>
 </schema>
