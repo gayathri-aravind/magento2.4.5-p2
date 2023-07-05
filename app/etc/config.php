@@ -327,6 +327,8 @@ return [
         'Magento_Wishlist' => 1,
         'Magento_WishlistAnalytics' => 1,
         'Magento_WishlistGraphQl' => 1,
+        'Checkout_Customize' => 1,
+        'Mage2tv_Js' => 1,
         'MyCompany_ExampleAdminNewPage' => 1,
         'PayPal_Braintree' => 1,
         'PayPal_BraintreeGraphQl' => 1,
@@ -334,7 +336,9 @@ return [
         'Training_DBSchema' => 1,
         'Training_DependencyExample' => 1,
         'Training_Example' => 1,
+        'Training_HotDeals' => 1,
         'Training_LayoutExample' => 1,
+        'Training_MyModule' => 1,
         'Training_WidgetExample' => 1
     ]
 ];
