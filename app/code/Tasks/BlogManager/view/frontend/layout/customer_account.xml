@@ -8,6 +8,12 @@
                     <argument name="path" xsi:type="string">blog/manage/add</argument>
                 </arguments>
             </block>
+            <block class="Magento\Framework\View\Element\Html\Link\Current" name="customer-account-navigation-blog-list" before="customer-account-navigation-blog-add" >
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">Blogs</argument>
+                    <argument name="path" xsi:type="string">blog/manage</argument>
+                </arguments>
+            </block>
         </referenceBlock>
     </body>
 </page>
