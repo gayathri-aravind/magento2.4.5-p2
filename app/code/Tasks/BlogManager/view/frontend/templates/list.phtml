@@ -1,18 +1,19 @@
-<table>
-    <tr>
-        <th>
+<div class="blog-list-table-container">
+<table class="blog-list-table">
+    <tr class="blog-list-table-head">
+        <th class="blog-list-table-id">
             <?= __("Id")?>
         </th>
-        <th>
+        <th class="blog-list-table-title">
             <?= __("Title")?>
         </th>
-        <th>
+        <th class="blog-list-table-content">
             <?= __("Content")?>
         </th>
-        <th>
+        <th class="blog-list-table-action-edit">
             <?= __("Edit")?>
         </th>
-        <th>
+        <th class="blog-list-table-action-delete">
             <?= __("Delete")?>
         </th>
     </tr>
@@ -20,27 +21,34 @@
     $blogs = $block->getBlogs();
 
     foreach ($blogs as $blog) {?>
-    <tr>
-        <td>
+    <tr class="blog-list-table-row">
+        <td class="blog-list-table-id">
             <?= $blog->getId()?>
         </td>
-        <td>
+        <td class="blog-list-table-title">
             <?= $blog->getTitle()?>
         </td>
-        <td>
+        <td class="blog-list-table-content">
             <?= substr($blog->getContent(), 0, 20).'...'?>
         </td>
-        <td>
+        <td class="blog-list-table-action blog-list-table-action-edit">
             <a href="<?= $block->getUrl('blog/manage/edit', ['id'=>$blog->getId()])?>">
                 <?= __('Edit') ?>
             </a>
         </td>
-        <td>
-            <a href="<?= $block->getUrl('blog/manage/delete', ['id'=>$blog->getId()])?>"
-                onclick="return confirm('Are you sure you want to delete this blog?');">
+        <td class="blog-list-table-action blog-list-table-action-delete">
+            <a href="<?= $block->getUrl('blog/manage/delete', ['id'=>$blog->getId()])?>">
                 <?= __('Delete') ?>
             </a>
         </td>
     </tr>
     <?php } ?>
 </table>
+</div>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "bloglist": ""
+        }
+    }
+</script>

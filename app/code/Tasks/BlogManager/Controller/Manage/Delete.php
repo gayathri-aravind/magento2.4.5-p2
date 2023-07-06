@@ -15,11 +15,11 @@ class Delete extends AbstractAccount
         Context $context,
         \Tasks\BlogManager\Model\BlogFactory $blogFactory,
         Session $customerSession,
-        \Magento\Framework\Message\ManagerInterface $messageManager
+        \Magento\Framework\Json\Helper\Data $jsonData
     ) {
         $this->blogFactory = $blogFactory;
         $this->customerSession = $customerSession;
-        $this->messageManager = $messageManager;
+        $this->jsonData = $jsonData;
         parent::__construct($context);
     }
 
@@ -33,13 +33,23 @@ class Delete extends AbstractAccount
                                     ->addFieldToFilter('entity_id', $blogId)
                                     ->getSize();
         if (!$isAuthorised) {
-            $this->messageManager->addError(__('You are not authorised to delete this blog.'));
-            return $this->resultRedirectFactory->create()->setPath('blog/manage');
+            $msg=__('You are not authorised to delete this blog.');
+            $success=0;
         } else {
             $model = $this->blogFactory->create()->load($blogId);
             $model->delete();
-            $this->messageManager->addSuccess(__('You have successfully deleted the blog.'));
-        }     
-        return $this->resultRedirectFactory->create()->setPath('blog/manage');
+            $msg=__('You have successfully deleted the blog.');
+            $success=1;
+        }
+
+        $this->getResponse()->setHeader('Content-type', 'application/javascript');
+        $this->getResponse()->setBody(
+            $this->jsonData->jsonEncode(
+                    [
+                        'success' => $success,
+                        'message' => $msg
+                    ]
+        ));
+
     }
 }
