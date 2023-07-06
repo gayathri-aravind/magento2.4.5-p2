@@ -17,6 +17,9 @@ class Add extends AbstractAccount
 
     public function execute()
     {
-      echo('<h1>Hello World</h1>');
+        $resultPage = $this->resultPageFactory->create();
+        $resultPage->getConfig()->getTitle()->set(__('Add Blog'));
+        $layout = $resultPage->getLayout();
+        return $resultPage;
     }
 }
