@@ -12,6 +12,9 @@
         <th>
             <?= __("Edit")?>
         </th>
+        <th>
+            <?= __("Delete")?>
+        </th>
     </tr>
     <?php
     $blogs = $block->getBlogs();
@@ -30,6 +33,12 @@
         <td>
             <a href="<?= $block->getUrl('blog/manage/edit', ['id'=>$blog->getId()])?>">
                 <?= __('Edit') ?>
+            </a>
+        </td>
+        <td>
+            <a href="<?= $block->getUrl('blog/manage/delete', ['id'=>$blog->getId()])?>"
+                onclick="return confirm('Are you sure you want to delete this blog?');">
+                <?= __('Delete') ?>
             </a>
         </td>
     </tr>
