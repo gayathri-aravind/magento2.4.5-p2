@@ -26,22 +26,41 @@ class Save extends AbstractAccount
     public function execute()
     {
         $data = $this->getRequest()->getParams();
-        // print_r($data); // Array ( [title] => s [content] => SS [form_key] => nLoX70SUSI2HAutJ )
-        $model = $this->blogFactory->create();
+        $customerId = $this->customerSession->getCustomerId(); //Gets the loggedin customer ID
 
-        // Sets the form data
-            // $model->setTitle($data['title']);
-            // $model->setContent($data['content']);
-            $model->setData($data);
+        if (isset($data['id']) && $data['id']) {
+            // Edit the 'Blog' - // print_r($data); // Array ( [id] => 1 [title] => s [content] => SS [form_key] => nLoX70SUSI2HAutJ )
+            $isAuthorised = $this->blogFactory->create()
+                                              ->getCollection()
+                                              ->addFieldToFilter('user_id', $customerId)
+                                              ->addFieldToFilter('entity_id', $data['id'])
+                                              ->getSize();
 
-        // Gets the loggedin customer ID and sets the value of the column (user_id) in the blogmanager_blog table
-            $customer = $this->customerSession->getCustomer();
-            $customerId = $customer->getId();
-            $model->setUserId($customerId);
+            if (!$isAuthorised) {
+                $this->messageManager->addError(__('You are not authorised to edit this blog.'));
+                return $this->resultRedirectFactory->create()->setPath('blog/manage');
+            } else {
+                $model = $this->blogFactory->create()->load($data['id']);
+                $model->setTitle($data['title'])
+                      ->setContent($data['content'])
+                      ->save();
+                $this->messageManager->addSuccess(__('You have updated the blog successfully.'));
+            }
+        }else{
+            // Add the 'Blog'  - // print_r($data); // Array ( [title] => s [content] => SS [form_key] => nLoX70SUSI2HAutJ )
+            $model = $this->blogFactory->create();
 
-        $model->save();
+            // Sets the form data
+                // $model->setTitle($data['title']);
+                // $model->setContent($data['content']);
+                $model->setData($data);
 
-        $this->messageManager->addSuccess(__('Blog saved successfully.'));
+            // Gets the loggedin customer ID and sets the value of the column (user_id) in the blogmanager_blog table
+                $model->setUserId($customerId);
+                $model->save();
+                $this->messageManager->addSuccess(__('Blog saved successfully.'));
+
+        }
         
         return $this->resultRedirectFactory->create()->setPath('blog/manage');
     }

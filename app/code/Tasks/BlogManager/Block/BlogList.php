@@ -28,7 +28,7 @@ class BlogList extends \Magento\Framework\View\Element\Template
         $collection->addFieldToFilter('user_id', ['eq'=>$customerId])
                    ->setOrder('updated_at', 'DESC'); // ORDER BY updated_at DESC
 
-                //    $collection->getSelect();
+        // print_r($collection->getSelect()); ==> prints the SQL query
 
         return $collection;
     }

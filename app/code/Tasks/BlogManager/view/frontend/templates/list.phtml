@@ -9,6 +9,9 @@
         <th>
             <?= __("Content")?>
         </th>
+        <th>
+            <?= __("Edit")?>
+        </th>
     </tr>
     <?php
     $blogs = $block->getBlogs();
@@ -23,6 +26,11 @@
         </td>
         <td>
             <?= substr($blog->getContent(), 0, 20).'...'?>
+        </td>
+        <td>
+            <a href="<?= $block->getUrl('blog/manage/edit', ['id'=>$blog->getId()])?>">
+                <?= __('Edit') ?>
+            </a>
         </td>
     </tr>
     <?php } ?>
