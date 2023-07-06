@@ -4,8 +4,16 @@ $blog = $block->getBlog();
 <div class="blog-container">
     <form class="blog-form" method="post" action=<?php echo $block->getUrl('blog/manage/save'); ?> data-mage-init='{"validation": {}}'>
         <input type="hidden" name="id" value="<?= $blog->getId()?>"/>
-        Title: <input type="text" name="title" class="required-entry" value="<?= $blog->getTitle(); ?>"/>
-        Content: <textarea name="content" class="required-entry validate-no-html-tags" rows="10"><?= $blog->getContent(); ?></textarea>
-        <button type="submit">Submit</button>
+        <div class="blog-form-field-container">
+            <span class="blog-form-field-label"><?=__('Title')?>:</span>
+            <input type="text" name="title" class="required-entry blog-form-field" value="<?= $blog->getTitle(); ?>"/>
+        </div>
+        <div class="blog-form-field-container">
+            <span class="blog-form-field-label"><?=__('Content')?>:</span>
+            <textarea name="content" class="required-entry validate-no-html-tags blog-form-field" rows="10"><?= $blog->getContent(); ?></textarea>
+        </div>
+        <div class="blog-form-action-container">
+            <button type="submit" class="blog-form-action"><?=__('Submit')?></button>
+        </div>
     </form>
 </div>
