@@ -1,0 +1,66 @@
+<div class="feedback-list-table-container">
+<table class="feedback-list-table">
+    <tr class="feedback-list-table-head">
+        <th class="feedback-list-table-id">
+            <?= __("Id")?>
+        </th>
+        <th class="feedback-list-table-customer-firstname">
+            <?= __("Customer FirstName")?>
+        </th>
+        <th class="feedback-list-table-customer-lastname">
+            <?= __("Customer LastName")?>
+        </th>
+        <th class="feedback-list-table-customer-email">
+            <?= __("Customer Email")?>
+        </th>
+        <th class="feedback-list-table-customer-comment">
+            <?= __("Comment")?>
+        </th>
+        <th class="feedback-list-table-action-edit">
+            <?= __("Edit")?>
+        </th>
+        <th class="feedback-list-table-action-delete">
+            <?= __("Delete")?>
+        </th>
+    </tr>
+    <?php
+    $feedbacks = $block->getFeedbacks();
+
+    foreach ($feedbacks as $feedback) {?>
+    <tr class="feedback-list-table-row">
+        <td class="feedback-list-table-id">
+            <?= $feedback->getId()?>
+        </td>
+        <td class="feedback-list-table-customer-firstname">
+            <?= $feedback->getCustomerFirstname()?>
+        </td>
+        <td class="feedback-list-table-customer-lastname">
+            <?= $feedback->getCustomerLastname()?>
+        </td>
+        <td class="feedback-list-table-customer-email">
+            <?= $feedback->getCustomerEmail()?>
+        </td>
+        <td class="feedback-list-table-customer-comment">
+            <?= substr($feedback->getComment(), 0, 20).'...'?>
+        </td>
+        <td class="feedback-list-table-action feedback-list-table-action-edit">
+            <a href="<?= $block->getUrl('feedback/manage/edit', ['id'=>$feedback->getId()])?>">
+                <?= __('Edit') ?>
+            </a>
+        </td>
+        <td class="feedback-list-table-action feedback-list-table-action-delete">
+            <a href="<?= $block->getUrl('feedback/manage/delete', ['id'=>$feedback->getId()])?>">
+                <?= __('Delete') ?>
+            </a>
+        </td>
+    </tr>
+    <?php } ?>
+</table>
+</div>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "feedbacklist": ""
+        }
+    }
+</script>

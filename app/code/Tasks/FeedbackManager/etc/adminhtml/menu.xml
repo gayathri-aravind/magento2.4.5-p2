@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <!-- <add id="Tasks_FeedbackManager::feedbackmanager" translate="title" title="Feedback Management" module="Tasks_FeedbackManager" sortOrder="11" resource="Tasks_FeedbackManager::feedbackmanager"/>
+        
+        <add id="Tasks_FeedbackManager::manage" translate="title" title="Manage" module="Tasks_FeedbackManager" sortOrder="11" resource="Tasks_FeedbackManager::manage" parent="Tasks_FeedbackManager::feedbackmanager" action="feedback/manage/index"/> -->
+
+         <add id="Tasks_FeedbackManager::manage" title="Customer Feedbacks" translate="title" module="Tasks_FeedbackManager" sortOrder="60" parent="Magento_Customer::customer" action="feedback/manage/index" resource="Tasks_FeedbackManager::manage"/>
+    </menu>
+</config>

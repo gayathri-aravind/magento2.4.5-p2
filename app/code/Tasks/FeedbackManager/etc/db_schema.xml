@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="feedbackmanager_feedback" resource="default" engine="innodb" comment="Feedbacks Table">
+        <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+        <column xsi:type="int" name="user_id" padding="10" unsigned="true" nullable="false" comment="Customer/User Id"/>
+        <column xsi:type="varchar" name="customer_firstname" nullable="false" length="255" comment="Customer FirstName"/>
+        <column xsi:type="varchar" name="customer_lastname" nullable="false" length="255" comment="Customer LastName"/>
+        <column xsi:type="varchar" name="customer_email" nullable="false" length="255" comment="Customer Email"/>
+        <column xsi:type="longtext" name="comment" nullable="false" comment="Feedback Comment"/>
+        <column xsi:type="smallint" name="status" padding="11" unsigned="false" nullable="false" default="0" comment="Feedback Status"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Creation Time"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP" comment="Updated At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <index referenceId="FEEDBACKMANAGER_FEEDBACK_USER_ID" indexType="btree">
+            <column name="user_id"/>
+        </index>
+    </table>
+    <table name="feedbackmanager_comment" resource="default" engine="innodb" comment="Feedback Comments Table">
+        <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+        <column xsi:type="int" name="feedback_id" padding="10" unsigned="true" nullable="false" comment="Feedback Id"/>
+        <column xsi:type="int" name="user_id" padding="10" unsigned="true" nullable="false" comment="User Id"/>
+        <column xsi:type="varchar" name="screen_name" nullable="false" length="255" comment="Screen Name"/>
+        <column xsi:type="text" name="comment" nullable="false" comment="Feedback Comment"/>
+        <column xsi:type="smallint" name="status" padding="11" unsigned="false" nullable="false" default="0" comment="Status"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Creation Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="FK_FEEDBACK_COMMENT" table="feedbackmanager_comment" column="feedback_id" referenceTable="feedbackmanager_feedback" referenceColumn="entity_id" onDelete="CASCADE"/>
+        <index referenceId="FEEDBACKMANAGER_COMMENT_FEEDBACK_ID" indexType="btree">
+            <column name="feedback_id"/>
+        </index>
+    </table>
+</schema>

@@ -1,0 +1,23 @@
+<div class="feedback-container">
+    <form class="feedback-form" method="post" action=<?php echo $block->getUrl('feedback/manage/save'); ?>  data-mage-init='{"validation": {}}'>
+        <div class="feedback-form-field-container">
+            <span class="feedback-form-field-label"><?=__('First Name')?>:</span>
+            <input type="text" name="customer_firstname" class="required-entry validate-alpha validate-not-number-first feedback-form-field" value= "<?= $block->getCustomerFirstname(); ?>" />
+        </div>
+        <div class="feedback-form-field-container">
+            <span class="feedback-form-field-label"><?=__('Last Name')?>:</span>
+            <input type="text" name="customer_lastname" class="required-entry validate-alpha validate-not-number-first feedback-form-field" value= "<?= $block->getCustomerLastname(); ?>"/>
+        </div>
+        <div class="feedback-form-field-container">
+            <span class="feedback-form-field-label"><?=__('Email')?>:</span>
+            <input type="text" name="customer_email" class="required-entry validate-email feedback-form-field" value= "<?= $block->getCustomerEmail(); ?>"/>
+        </div>
+        <div class="feedback-form-field-container">
+            <span class="feedback-form-field-label"><?=__('Comment')?>:</span>
+            <textarea name="comment" class="required-entry validate-no-html-tags feedback-form-field"></textarea>
+        </div>
+        <div class="feedback-form-action-container">
+            <button type="submit" class="feedback-form-action"><?=__('Submit')?></button>
+        </div>
+    </form>
+</div>
