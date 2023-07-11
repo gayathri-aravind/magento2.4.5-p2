@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Tasks_BlogManager::blogmanager" translate="title" title="Blog Management" module="Tasks_BlogManager" sortOrder="10" resource="Tasks_BlogManager::blogmanager"/>
+        
+        <add id="Tasks_BlogManager::manage" translate="title" title="Manage" module="Tasks_BlogManager" sortOrder="10" resource="Tasks_BlogManager::manage" parent="Tasks_BlogManager::blogmanager" action="blog/manage/index"/>
+    </menu>
+</config>
