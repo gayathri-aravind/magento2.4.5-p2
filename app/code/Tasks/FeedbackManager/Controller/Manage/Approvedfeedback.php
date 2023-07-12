@@ -47,13 +47,10 @@ class ApprovedFeedback extends Action
     {
         $result = $this->jsonFactory->create();
         $response['feedback_status'] = false;
-
         $response['data'] = $this->getApprovedFeedback();
 
-        if(!empty($response['data'])) {
-            $response['feedback_status'] = true;
-        }
-
+        if(!empty($response['data'])) $response['feedback_status'] = true;
+        
         $result->setData($response);
         return $result;
     }

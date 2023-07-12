@@ -28,11 +28,10 @@ class MassStatus extends Action
         try {
             $collection = $this->filter->getCollection($this->collectionFactory->create());
             $status = $this->getRequest()->getParam('status');
-            if($status == 1){
-                $statusLabel = "approved";
-            }else if($status == 2){
-                $statusLabel = "declined";
-            }
+            if($status == 1) $statusLabel = "approved";
+                
+            if($status == 2) $statusLabel = "declined";
+            
             $count = 0;
             foreach ($collection as $model) {
                 $model->setStatus($status);

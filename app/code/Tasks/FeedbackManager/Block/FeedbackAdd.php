@@ -33,25 +33,19 @@ class FeedbackAdd extends \Magento\Framework\View\Element\Template
      
      public function getCustomerFirstName()
      {
-         if($this->customerData) 
-              return $this->customerData->getFirstname();
-         else 
-             return false;
+        if(!$this->customerData) return false;
+        return $this->customerData->getFirstname();   
      }
  
      public function getCustomerLastName()
      {
-         if($this->customerData) 
-              return $this->customerData->getLastname();
-         else 
-             return false;
+        if(!$this->customerData) return false;
+        return $this->customerData->getLastname();  
      }
  
      public function getCustomerEmail()
      {
-         if($this->customerData) 
-              return $this->customerData->getEmail();
-         else 
-             return false;
+        if(!$this->customerData) return false;
+        return $this->customerData->getEmail();   
      }
 }
