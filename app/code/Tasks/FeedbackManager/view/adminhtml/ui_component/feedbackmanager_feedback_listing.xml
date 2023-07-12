@@ -160,6 +160,19 @@
                 <label translate="true">Created</label>
             </settings>
         </column>
+        <actionsColumn name="view_action" class="Tasks\FeedbackManager\Ui\Component\Listing\Columns\ViewAction">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="indexField" xsi:type="string">entity_id</item>
+                    <item name="viewUrlPath" xsi:type="string">feedbackmanager/manage/view</item>
+                    <item name="urlEntityParamName" xsi:type="string">id</item>
+                    <item name="sortOrder" xsi:type="number">30</item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true">View</label>
+            </settings>
+        </actionsColumn>
         <actionsColumn name="edit_action" class="Tasks\FeedbackManager\Ui\Component\Listing\Columns\EditAction">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
