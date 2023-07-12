@@ -110,8 +110,8 @@ class Sendmail extends AbstractHelper
 
             return true;
         } catch (Exception $e) {
-            $this->messageManager->addErrorMessage(__('Error').$e->getMessage());
-            // $this->_inlineTranslation->resume();
+            // $this->messageManager->addErrorMessage(__('Error').$e->getMessage());
+            $this->_inlineTranslation->resume();
         }
 
         return false;

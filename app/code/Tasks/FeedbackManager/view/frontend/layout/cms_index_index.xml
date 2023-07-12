@@ -6,7 +6,7 @@
     </head>
     <body>
         <referenceContainer name="content">
-            <block name="scroller" class="Tasks\FeedbackManager\Block\Scroller" template="Tasks_FeedbackManager::scroller.phtml"/>
+            <block name="scroller" class="Magento\Framework\View\Element\Template" template="Tasks_FeedbackManager::scroller.phtml"/>
         </referenceContainer>
     </body>
 </page>
