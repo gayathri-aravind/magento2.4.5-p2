@@ -100,7 +100,7 @@ class Sendmail extends AbstractHelper
                 ])
                 ->setTemplateVars(['data' => $postObject])
                 ->setFrom($sender)
-                ->addTo($this->_recipient['email'], $this->_recipient['firstname'])
+                ->addTo($this->_recipient['customer_email'], $this->_recipient['customer_firstname'])
                 ->addBcc($storeAdmin)
                 ->getTransport();
 
@@ -110,8 +110,8 @@ class Sendmail extends AbstractHelper
 
             return true;
         } catch (Exception $e) {
-            //$this->messageManager->addErrorMessage(__('Error').$e->getMessage());
-            $this->_inlineTranslation->resume();
+            $this->messageManager->addErrorMessage(__('Error').$e->getMessage());
+            // $this->_inlineTranslation->resume();
         }
 
         return false;
@@ -124,7 +124,7 @@ class Sendmail extends AbstractHelper
      */
     public function sendMail($template , $data)
     {
-        $data['name'] = $data['firstname'] ." ". $data['lastname'];
+        $data['name'] = $data['customer_firstname'] ." ". $data['customer_lastname'];
         $this->setRecipient($data);
         $this->setTemplate($template, $data);
 

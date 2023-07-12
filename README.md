@@ -23,12 +23,17 @@
     In frontend:
       1. Created a customer feedback form with all the CRUD operations. But as per the task, enabled only the 'Add and Save' functionality.
       2. The feedback form is shown to all the customers and for the logged in customer, the details of them are pre-filled from their session.
+      3. The approved feedbacks are shown with scroller in the home page.
     In the admin panel:
       1. Displayed the feedbacks in the grid view.
-      2. Done sorting, filtering, pagination in the grid view and added the 'Delete', 'Edit' action columns.
+      2. Done sorting, filtering, pagination in the grid view and added the 'Delete', 'Edit', 'View' action columns.
       3. In the Edit page, the Approve and Decline functionality is kept.
+      4. Email will be send to the customer if it's feedback is approved or rejected.
     
 - duration of the task Vs. ETA
     Duration: 3 days
+
 - test cases which you run
+
 - Specify if there are any bugs
+  1. The 'Back' button is missing in the View page (admin grid).

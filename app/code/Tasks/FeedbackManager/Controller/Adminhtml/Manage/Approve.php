@@ -33,8 +33,8 @@ class Approve extends Action
                 $feedbackModel->setData('status', 1)
                         ->save();
                 
-                // $mailStatus = $this->mailer->sendMail("feedback_decline_template" , (array)$feedbackModel->getData());
-                // if ($mailStatus) { $this->messageManager->addSuccessMessage(__('Feedback decline status has sent to customer by email.')); }
+                $mailStatus = $this->mailer->sendMail("feedback_accept_template" , (array)$feedbackModel->getData());
+                if ($mailStatus) { $this->messageManager->addSuccessMessage(__('Customer notified on his/her feedback approve status.')); }
             } catch (\Exception $e) {
                 $this->messageManager->addErrorMessage($e->getMessage());
             }

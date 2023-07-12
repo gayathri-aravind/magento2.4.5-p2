@@ -33,8 +33,8 @@ class Decline extends Action
                 $feedbackModel->setData('status', 2)
                         ->save();
                 
-                // $mailStatus = $this->mailer->sendMail("feedback_decline_template" , (array)$feedbackModel->getData());
-                // if ($mailStatus) { $this->messageManager->addSuccessMessage(__('Feedback decline status has sent to customer by email.')); }
+                $mailStatus = $this->mailer->sendMail("feedback_decline_template" , (array)$feedbackModel->getData());
+                if ($mailStatus) { $this->messageManager->addSuccessMessage(__('Customer notified on his/her feedback decline status.')); }
             } catch (\Exception $e) {
                 $this->messageManager->addErrorMessage($e->getMessage());
             }
