@@ -16,7 +16,7 @@ class DeclineButton extends GenericButton implements ButtonProviderInterface
     {
         $data = [];
         $status = $this->getStatus();
-        if ($status || $status === null || !$status)
+        if(!$status || ($status == 1)) // Showing 'Decline' button for pending and approved statuses
             $data = [
                 'label' => __('Decline'),
                 'class' => 'primary',
