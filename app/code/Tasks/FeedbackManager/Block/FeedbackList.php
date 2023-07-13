@@ -1,8 +1,6 @@
 <?php
 namespace Tasks\FeedbackManager\Block;
 
-use Magento\Customer\Model\SessionFactory;
-
 class FeedbackList extends \Magento\Framework\View\Element\Template
 {
     protected $feedbackCollection;
@@ -11,7 +9,7 @@ class FeedbackList extends \Magento\Framework\View\Element\Template
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
         \Tasks\FeedbackManager\Model\ResourceModel\Feedback\CollectionFactory $feedbackCollection,
-        SessionFactory $customerSession,
+        \Magento\Customer\Model\SessionFactory $customerSession,
         array $data = []
     ) {
         $this->feedbackCollection = $feedbackCollection;

@@ -1,8 +1,6 @@
 <?php
 namespace Tasks\FeedbackManager\Block;
 
-use Magento\Customer\Model\SessionFactory;
-
 class FeedbackAdd extends \Magento\Framework\View\Element\Template
 {
    
@@ -21,7 +19,7 @@ class FeedbackAdd extends \Magento\Framework\View\Element\Template
  
      public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
-         SessionFactory $session,
+        \Magento\Customer\Model\SessionFactory $session,
          array $data = []
      )
      {

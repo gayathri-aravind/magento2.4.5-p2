@@ -1,10 +1,6 @@
 <?php
 namespace Tasks\FeedbackManager\Controller\Manage;
 
-use Magento\Customer\Controller\AbstractAccount;
-use Magento\Framework\App\Action\Context;
-use Magento\Customer\Model\Session;
-
 class Delete extends \Magento\Framework\App\Action\Action
 {
     protected $feedbackFactory;
@@ -13,9 +9,9 @@ class Delete extends \Magento\Framework\App\Action\Action
     protected $jsonData;
 
     public function __construct(
-        Context $context,
+        \Magento\Framework\App\Action\Context $context,
         \Tasks\FeedbackManager\Model\FeedbackFactory $feedbackFactory,
-        Session $customerSession,
+        \Magento\Customer\Model\Session $customerSession,
         \Magento\Framework\Json\Helper\Data $jsonData
     ) {
         $this->feedbackFactory = $feedbackFactory;

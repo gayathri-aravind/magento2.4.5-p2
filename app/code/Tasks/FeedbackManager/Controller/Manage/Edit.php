@@ -1,11 +1,6 @@
 <?php
 namespace Tasks\FeedbackManager\Controller\Manage;
 
-use Magento\Customer\Controller\AbstractAccount;
-use Magento\Framework\App\Action\Context;
-use Magento\Framework\View\Result\PageFactory;
-use Magento\Customer\Model\Session;
-
 class Edit extends \Magento\Framework\App\Action\Action
 {
 
@@ -15,11 +10,11 @@ class Edit extends \Magento\Framework\App\Action\Action
     protected $messageManager;
 
     public function __construct(
-        Context $context,
-    PageFactory $resultPageFactory,
-    \Tasks\FeedbackManager\Model\FeedbackFactory $feedbackFactory,
-    Session $customerSession,
-    \Magento\Framework\Message\ManagerInterface $messageManager
+        \Magento\Framework\App\Action\Context $context,
+        \Magento\Framework\View\Result\PageFactory $resultPageFactory,
+        \Tasks\FeedbackManager\Model\FeedbackFactory $feedbackFactory,
+        \Magento\Customer\Model\Session $customerSession,
+        \Magento\Framework\Message\ManagerInterface $messageManager
     ) {
         $this->resultPageFactory = $resultPageFactory;
         $this->feedbackFactory = $feedbackFactory;

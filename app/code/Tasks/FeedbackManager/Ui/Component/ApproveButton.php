@@ -16,7 +16,7 @@ class ApproveButton extends GenericButton implements ButtonProviderInterface
     {
         $data = [];
         $status = $this->getStatus();
-        if(!$status || ($status ==2)) // Showing 'Approve' button for pending and declined statuses
+        if(!$status || ($status === '2')) // Showing 'Approve' button for pending and declined statuses
             $data = [
                 'label' => __('Approve'),
                 'class' => 'primary',

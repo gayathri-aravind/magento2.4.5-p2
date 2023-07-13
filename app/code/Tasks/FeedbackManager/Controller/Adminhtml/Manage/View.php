@@ -1,10 +1,9 @@
 <?php
 namespace Tasks\FeedbackManager\Controller\Adminhtml\Manage;
 
-use Magento\Backend\App\Action;
 use Magento\Framework\Controller\ResultFactory;
 
-class View extends Action
+class View extends \Magento\Backend\App\Action
 {
     public function execute()
     {

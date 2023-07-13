@@ -1,19 +1,15 @@
 <?php
 namespace Tasks\FeedbackManager\Controller\Adminhtml\Manage;
 
-use Magento\Backend\App\Action;
-use Tasks\FeedbackManager\Helper\Sendmail;
-use Magento\Backend\App\Action\Context;
-
-class Approve extends Action
+class Approve extends \Magento\Backend\App\Action
 {
     protected $feedbackFactory;
     protected $mailer;
     
     public function __construct(
-        Context $context,
+        \Magento\Backend\App\Action\Context $context,
         \Tasks\FeedbackManager\Model\FeedbackFactory $feedbackFactory,
-        Sendmail $mailer
+        \Tasks\FeedbackManager\Helper\Sendmail $mailer
     ) {
         $this->feedbackFactory = $feedbackFactory;
         $this->mailer = $mailer;

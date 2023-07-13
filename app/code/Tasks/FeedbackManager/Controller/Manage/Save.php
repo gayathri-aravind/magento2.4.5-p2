@@ -2,10 +2,6 @@
 
 namespace Tasks\FeedbackManager\Controller\Manage;
 
-use Magento\Customer\Controller\AbstractAccount;
-use Magento\Framework\App\Action\Context;
-use Magento\Customer\Model\Session;
-
 class Save extends \Magento\Framework\App\Action\Action
 {
 
@@ -13,7 +9,11 @@ class Save extends \Magento\Framework\App\Action\Action
     protected $customerSession;
     protected $messageManager;
 
-    public function __construct(Context $context, \Tasks\FeedbackManager\Model\FeedbackFactory $feedbackFactory, Session $customerSession, \Magento\Framework\Message\ManagerInterface $messageManager)
+    public function __construct(
+        \Magento\Framework\App\Action\Context $context, 
+        \Tasks\FeedbackManager\Model\FeedbackFactory $feedbackFactory, 
+        \Magento\Customer\Model\Session $customerSession, 
+        \Magento\Framework\Message\ManagerInterface $messageManager)
     {
         $this->feedbackFactory = $feedbackFactory;
         $this->customerSession = $customerSession;

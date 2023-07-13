@@ -1,22 +1,18 @@
 <?php
 namespace Tasks\FeedbackManager\Controller\Adminhtml\Manage;
 
-use Magento\Backend\App\Action;
-use Magento\Backend\App\Action\Context;
 use Magento\Framework\Controller\ResultFactory;
-use Magento\Ui\Component\MassAction\Filter;
-use Tasks\FeedbackManager\Model\ResourceModel\Feedback\CollectionFactory;
 
-class MassStatus extends Action
+class MassStatus extends \Magento\Backend\App\Action
 {
     protected $collectionFactory;
 
     protected $filter;
 
     public function __construct(
-        Context $context,
-        Filter $filter,
-        CollectionFactory $collectionFactory
+        \Magento\Backend\App\Action\Context $context,
+        \Magento\Ui\Component\MassAction\Filter $filter,
+        \Tasks\FeedbackManager\Model\ResourceModel\Feedback\CollectionFactory $collectionFactory
     ) {
         $this->filter = $filter;
         $this->collectionFactory = $collectionFactory;
@@ -28,9 +24,11 @@ class MassStatus extends Action
         try {
             $collection = $this->filter->getCollection($this->collectionFactory->create());
             $status = $this->getRequest()->getParam('status');
-            if($status == 1) $statusLabel = "approved";
-                
-            if($status == 2) $statusLabel = "declined";
+            // Usage of match expression
+            $statusLabel = match ($status) {
+                '1' => "approved",
+                '2' => "declined"
+            };
             
             $count = 0;
             foreach ($collection as $model) {

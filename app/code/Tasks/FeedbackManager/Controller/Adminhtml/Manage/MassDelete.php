@@ -1,22 +1,18 @@
 <?php
 namespace Tasks\FeedbackManager\Controller\Adminhtml\Manage;
 
-use Magento\Backend\App\Action;
-use Magento\Backend\App\Action\Context;
 use Magento\Framework\Controller\ResultFactory;
-use Magento\Ui\Component\MassAction\Filter;
-use Tasks\FeedbackManager\Model\ResourceModel\Feedback\CollectionFactory;
 
-class MassDelete extends Action
+class MassDelete extends \Magento\Backend\App\Action
 {
     protected $collectionFactory;
 
     protected $filter;
 
     public function __construct(
-        Context $context,
-        Filter $filter,
-        CollectionFactory $collectionFactory
+        \Magento\Backend\App\Action\Context $context,
+        \Magento\Ui\Component\MassAction\Filter $filter,
+        \Tasks\FeedbackManager\Model\ResourceModel\Feedback\CollectionFactory $collectionFactory
     ) {
         $this->filter = $filter;
         $this->collectionFactory = $collectionFactory;

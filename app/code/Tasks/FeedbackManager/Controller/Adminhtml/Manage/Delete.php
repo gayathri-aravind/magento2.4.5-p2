@@ -1,15 +1,12 @@
 <?php
 namespace Tasks\FeedbackManager\Controller\Adminhtml\Manage;
 
-use Magento\Backend\App\Action;
-use Magento\Backend\App\Action\Context;
-
-class Delete extends Action
+class Delete extends \Magento\Backend\App\Action
 {
     protected $feedbackFactory;
     
     public function __construct(
-        Context $context,
+        \Magento\Backend\App\Action\Context $context,
         \Tasks\FeedbackManager\Model\FeedbackFactory $feedbackFactory
     ) {
         $this->feedbackFactory = $feedbackFactory;
