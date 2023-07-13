@@ -329,9 +329,13 @@ return [
         'Magento_WishlistGraphQl' => 1,
         'Checkout_Customize' => 1,
         'Mage2tv_Js' => 1,
+        'MagePal_Core' => 1,
+        'MagePal_GmailSmtpApp' => 1,
         'MyCompany_ExampleAdminNewPage' => 1,
         'PayPal_Braintree' => 1,
         'PayPal_BraintreeGraphQl' => 1,
+        'Tasks_BlogManager' => 1,
+        'Tasks_FeedbackManager' => 1,
         'Temando_ShippingRemover' => 1,
         'Training_DBSchema' => 1,
         'Training_DependencyExample' => 1,
@@ -339,6 +343,7 @@ return [
         'Training_HotDeals' => 1,
         'Training_LayoutExample' => 1,
         'Training_MyModule' => 1,
+        'Training_PluginExampleOne' => 1,
         'Training_WidgetExample' => 1
     ]
 ];
