@@ -1,0 +1,44 @@
+<div class="page-main-actions">
+</div>
+<table>
+<tbody class="feedback-view-table">
+    <?php  
+        $feedbacks = $block->getDataById(); 
+        foreach ($feedbacks as $feedback) {
+    ?>
+        <tr class="feedback-view-row">
+            <td>Feedback ID</td>
+            <td><?= $feedback->getId()?></td>
+        </tr>
+        <tr class="feedback-view-row">
+            <td>Customer Name</td>
+            <td><?= $feedback->getCustomerFirstname().' '.$feedback->getCustomerLastname() ?></td>
+        </tr>
+        <tr class="feedback-view-row">
+            <td>Customer Email</td>
+            <td><?= $feedback->getCustomerEmail() ?></td>
+        </tr>
+        <tr class="feedback-view-row">
+            <td>Comments</td>
+            <td><?= $feedback->getComment() ?></td>
+        </tr>
+        <tr class="feedback-view-row">
+            <td>Status</td>
+                <?php 
+                
+                    $status = $feedback->getStatus();
+                    if($status == 1){ ?>
+                        <td>Approved</td>
+                    <?php }else if($status == 2){ ?>
+                        <td>Declined</td>
+                    <?php }else{ ?>
+                        <td>Pending</td>
+                    <?php }
+                ?>
+        </tr>
+    <?php
+        }    
+    ?>
+
+</tbody>
+</table>

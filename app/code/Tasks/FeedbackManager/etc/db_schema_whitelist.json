@@ -1,0 +1,59 @@
+{
+    "feeddbackmanager_feedback": {
+        "column": {
+            "entity_id": true,
+            "user_id": true,
+            "customer_firstname": true,
+            "customer_lastname": true,
+            "customer_email": true,
+            "comment": true,
+            "status": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "index": {
+            "FEEDDBACKMANAGER_FEEDBACK_USER_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "feedbackmanager_comment": {
+        "column": {
+            "entity_id": true,
+            "feedback_id": true,
+            "user_id": true,
+            "screen_name": true,
+            "comment": true,
+            "status": true,
+            "created_at": true
+        },
+        "index": {
+            "FEEDBACKMANAGER_COMMENT_FEEDBACK_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "FK_22C03341D4CC24B552DF0B303D6A9261": true,
+            "FK_1455F7729FC8FB61DA2351807A0BAE77": true
+        }
+    },
+    "feedbackmanager_feedback": {
+        "column": {
+            "entity_id": true,
+            "user_id": true,
+            "customer_firstname": true,
+            "customer_lastname": true,
+            "customer_email": true,
+            "comment": true,
+            "status": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "index": {
+            "FEEDBACKMANAGER_FEEDBACK_USER_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

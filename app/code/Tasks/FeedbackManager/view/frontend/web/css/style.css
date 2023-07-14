@@ -1,0 +1,13 @@
+.feedback-form .feedback-form-field-container {
+    margin: 15px auto;
+}
+.feedback-form .feedback-form-action-container {
+    text-align: center;
+}
+.feedback-form .feedback-form-action-container .feedback-form-action {
+    min-width: 150px;
+    padding: 10px;
+    font-size: 16px;
+    background: #2b4c8a;
+    color: white;
+}
