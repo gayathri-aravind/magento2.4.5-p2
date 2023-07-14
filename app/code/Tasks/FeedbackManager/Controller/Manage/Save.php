@@ -34,32 +34,40 @@ class Save implements \Magento\Framework\App\ActionInterface
     {
         $data = $this->request->getParams();
         $customerId = $this->customerSession->getCustomerId();
-        if (isset($data['id']) && $data['id']) { // Editing the form. Only in Edit form, we have 'id' set
-            $isAuthorised = $this->collectionFactory->create()
-                                        ->addFieldToFilter('user_id', $customerId)
-                                        ->addFieldToFilter('entity_id', $data['id'])
-                                        ->getSize();
-            if (!$isAuthorised) {
-                $this->messageManager->addErrorMessage(__('You are not authorised to edit this blog.'));
-                return $this->resultRedirectFactory->create()->setPath('feedback/manage');
-            } else {
-                // select * from feedbackmanager_feedback where entity_id = 4
-                $model = $this->feedbackFactory->create()->load($data['id']);
-                // Updating the table based on the user inputs
-                $model->setCustomerFirstname($data['customer_firstname'])
-                        ->setCustomerLastname($data['customer_lastname'])
-                        ->setCustomerEmail($data['customer_email'])
-                    ->setComment($data['comment'])
-                    ->save();
-                $this->messageManager->addSuccessMessage(__('You have updated the feedback successfully.'));
-            }
-        } else {    // Adding the feedback.
-            $model = $this->feedbackFactory->create();
+
+        $model = $this->feedbackFactory->create();
+
+        if (!isset($data['id'])) {
             $model->setData($data);
             $model->setUserId($customerId);
             $this->feedback->save($model);
-            $this->messageManager->addSuccessMessage(__('Feedback saved successfully.'));
+            $this->messageManager->addSuccessMessage(
+                __('Feedback saved successfully.')
+            );
+            return $this->resultRedirectFactory->create()->setPath('/');
         }
+
+        $isAuthorised = $this->collectionFactory->create()
+                             ->addFieldToFilter('user_id', $customerId)
+                             ->addFieldToFilter('entity_id', $data['id'])
+                             ->getSize();
+
+        if (!$isAuthorised) {
+            $this->messageManager->addErrorMessage(
+                __('You are not authorised to edit this feedback.')
+            );
+            return $this->resultRedirectFactory->create()->setPath('/');
+        }
+
+        $model->load($data['id']);
+        $model->setCustomerFirstname($data['customer_firstname'])
+              ->setCustomerLastname($data['customer_lastname'])
+              ->setCustomerEmail($data['customer_email'])
+              ->setComment($data['comment']);
+        $this->feedback->save($model);
+        $this->messageManager->addSuccessMessage(
+            __('You have updated the feedback successfully.')
+        );
         return $this->resultRedirectFactory->create()->setPath('/');
     }
 }
