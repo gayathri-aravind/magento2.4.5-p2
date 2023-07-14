@@ -1,4 +1,5 @@
 <?php
+
 namespace Tasks\FeedbackManager\Controller\Adminhtml\Manage;
 
 use Magento\Framework\Controller\ResultFactory;
@@ -29,7 +30,7 @@ class MassStatus extends \Magento\Backend\App\Action
                 '1' => "approved",
                 '2' => "declined"
             };
-            
+
             $count = 0;
             foreach ($collection as $model) {
                 $model->setStatus($status);

@@ -1,5 +1,5 @@
 <div class="feedback-container">
-    <form class="feedback-form" method="post" action=<?php echo $block->getUrl('feedback/manage/save'); ?>  data-mage-init='{"validation": {}}'>
+    <form class="feedback-form" method="post" action=<?= $block->getUrl('feedback/manage/save'); ?>  data-mage-init='{"validation": {}}'>
         <div class="feedback-form-field-container">
             <span class="feedback-form-field-label"><?=__('First Name')?>:</span>
             <input type="text" name="customer_firstname" class="required-entry validate-alpha validate-not-number-first feedback-form-field" value= "<?= $block->getCustomerFirstname(); ?>" />

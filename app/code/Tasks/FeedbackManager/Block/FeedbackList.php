@@ -1,4 +1,5 @@
 <?php
+
 namespace Tasks\FeedbackManager\Block;
 
 class FeedbackList extends \Magento\Framework\View\Element\Template
@@ -22,7 +23,7 @@ class FeedbackList extends \Magento\Framework\View\Element\Template
         $customerId = $this->customerSession->create()->getCustomer()->getId();
 
         $collection = $this->feedbackCollection->create();
-        $collection->addFieldToFilter('user_id', ['eq'=>$customerId])
+        $collection->addFieldToFilter('user_id', ['eq' => $customerId])
                     ->setOrder('updated_at', 'DESC');
 
         return $collection;

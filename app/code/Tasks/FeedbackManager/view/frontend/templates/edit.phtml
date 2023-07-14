@@ -2,7 +2,7 @@
 $feedback = $block->getFeedback();
 ?>
 <div class="feedback-container">
-    <form class="feedback-form" method="post" action=<?php echo $block->getUrl('feedback/manage/save'); ?>  data-mage-init='{"validation": {}}'>
+    <form class="feedback-form" method="post" action=<?= $block->getUrl('feedback/manage/save'); ?>  data-mage-init='{"validation": {}}'>
         <input type="hidden" name="id" value="<?= $feedback->getId()?>"/>
         <div class="feedback-form-field-container">
             <span class="feedback-form-field-label"><?=__('First Name')?>:</span>

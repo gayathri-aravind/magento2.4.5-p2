@@ -1,4 +1,5 @@
 <?php
+
 namespace Tasks\FeedbackManager\Model\Feedback;
 
 use Magento\Framework\Data\OptionSourceInterface;

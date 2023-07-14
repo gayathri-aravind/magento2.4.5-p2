@@ -1,4 +1,5 @@
 <?php
+
 namespace Tasks\FeedbackManager\Block;
 
 class Feedback extends \Magento\Framework\View\Element\Template

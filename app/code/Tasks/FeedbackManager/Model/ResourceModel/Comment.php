@@ -1,4 +1,5 @@
 <?php
+
 namespace Tasks\FeedbackManager\Model\ResourceModel;
 
 class Comment extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb

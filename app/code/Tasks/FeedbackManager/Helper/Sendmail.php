@@ -17,7 +17,6 @@ use Magento\Store\Model\Store;
 /** Description of Mail. */
 class Sendmail extends AbstractHelper
 {
-
     /** @var ManagerInterface */
     protected $messageManager;
 
@@ -52,8 +51,7 @@ class Sendmail extends AbstractHelper
         TransportBuilder $transportBuilder,
         ScopeConfigInterface $scopeConfig,
         ManagerInterface $messageManager
-    )
-    {
+    ) {
         $this->messageManager = $messageManager;
         $this->_scopeConfig = $scopeConfig;
         $this->_inlineTranslation = $inlineTranslation;
@@ -110,7 +108,7 @@ class Sendmail extends AbstractHelper
 
             return true;
         } catch (Exception $e) {
-            // $this->messageManager->addErrorMessage(__('Error').$e->getMessage());
+            // $this->messageManager->addErrorMessage(__('Error') . $e->getMessage());
             $this->_inlineTranslation->resume();
         }
 
@@ -122,9 +120,9 @@ class Sendmail extends AbstractHelper
      * @param string $template
      * @return bool Status of the email
      */
-    public function sendMail($template , $data)
+    public function sendMail($template, $data)
     {
-        $data['name'] = $data['customer_firstname'] ." ". $data['customer_lastname'];
+        $data['name'] = $data['customer_firstname'] . " " . $data['customer_lastname'];
         $this->setRecipient($data);
         $this->setTemplate($template, $data);
 

@@ -2,16 +2,15 @@
 
 namespace Tasks\FeedbackManager\Controller\Manage;
 
-use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\Result\JsonFactory;
 use Tasks\FeedbackManager\Model\Feedback;
+use Tasks\FeedbackManager\Model\ResourceModel\Feedback\CollectionFactory;
 
-class ApprovedFeedback extends Action
+class ApprovedFeedback implements \Magento\Framework\App\ActionInterface
 {
-
     /** @var JsonFactory */
     protected $jsonFactory;
 
@@ -21,20 +20,28 @@ class ApprovedFeedback extends Action
     /** @var ScopeConfigInterface */
     protected $scopeConfig;
 
+    /** @var CollectionFactory */
+    protected $collectionFactory;
+
     /**
      * ApprovedFeedback constructor.
      * @param Context $context
      * @param JsonFactory $jsonFactory
      * @param Feedback $feedbackModel
      * @param ScopeConfigInterface $scopeConfig
+     * @param CollectionFactory $collectionFactory,
      */
 
-    public function __construct(Context $context, JsonFactory $jsonFactory, Feedback $feedbackModel, ScopeConfigInterface $scopeConfig)
-    {
+    public function __construct(
+        JsonFactory $jsonFactory,
+        Feedback $feedbackModel,
+        ScopeConfigInterface $scopeConfig,
+        CollectionFactory $collectionFactory
+    ) {
         $this->jsonFactory = $jsonFactory;
         $this->feedbackModel = $feedbackModel;
         $this->scopeConfig = $scopeConfig;
-        parent::__construct($context);
+        $this->collectionFactory = $collectionFactory;
     }
 
     /**
@@ -49,8 +56,10 @@ class ApprovedFeedback extends Action
         $response['feedback_status'] = false;
         $response['data'] = $this->getApprovedFeedback();
 
-        if(!empty($response['data'])) $response['feedback_status'] = true;
-        
+        if (!empty($response['data'])) {
+            $response['feedback_status'] = true;
+        }
+
         $result->setData($response);
         return $result;
     }
@@ -58,7 +67,7 @@ class ApprovedFeedback extends Action
     /** @return array firstname, lastname, emailId, feedback from feedback database */
     public function getApprovedFeedback()
     {
-        $collection = $this->feedbackModel->getCollection();
+        $collection = $this->collectionFactory->create();
         $collection->addFieldToSelect(array('customer_firstname', 'customer_lastname', 'customer_email', 'comment'))
             ->addFieldToFilter('status', ['eq' => 1]);
 

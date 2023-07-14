@@ -6,7 +6,6 @@ use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
 class ApproveButton extends GenericButton implements ButtonProviderInterface
 {
-
     /**
      * Retrieve button-specified settings
      *
@@ -16,7 +15,8 @@ class ApproveButton extends GenericButton implements ButtonProviderInterface
     {
         $data = [];
         $status = $this->getStatus();
-        if(!$status || ($status === '2')) // Showing 'Approve' button for pending and declined statuses
+        // Showing 'Approve' button for pending and declined statuses
+        if (!$status || ($status === '2')) {
             $data = [
                 'label' => __('Approve'),
                 'class' => 'primary',
@@ -27,7 +27,7 @@ class ApproveButton extends GenericButton implements ButtonProviderInterface
                 'on_click' => sprintf("location.href = '%s';", $this->getApproveUrl()),
                 'sort_order' => 10,
             ];
-
+        }
         return $data;
     }
 
@@ -38,5 +38,4 @@ class ApproveButton extends GenericButton implements ButtonProviderInterface
     {
         return $this->getUrl('*/*/approve', ['id' => $this->getId()]);
     }
-
 }

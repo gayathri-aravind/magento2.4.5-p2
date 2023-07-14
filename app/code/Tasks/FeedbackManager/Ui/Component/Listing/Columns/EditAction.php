@@ -1,4 +1,5 @@
 <?php
+
 namespace Tasks\FeedbackManager\Ui\Component\Listing\Columns;
 
 use Magento\Framework\UrlInterface;

@@ -1,4 +1,5 @@
 <?php
+
 namespace Tasks\FeedbackManager\Model\Feedback;
 
 use Magento\Framework\Data\OptionSourceInterface;
@@ -21,8 +22,10 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 
     public function getData()
     {
-        if (isset($this->loadedData)) return $this->loadedData;
-            
+        if (isset($this->loadedData)) {
+            return $this->loadedData;
+        }
+
         $items = $this->collection->getItems();
         foreach ($items as $feedback) {
             $this->loadedData[$feedback->getId()] = $feedback->getData();

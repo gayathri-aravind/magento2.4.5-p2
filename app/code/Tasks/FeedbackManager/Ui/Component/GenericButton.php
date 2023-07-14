@@ -7,7 +7,6 @@ use Tasks\FeedbackManager\Model\FeedbackFactory;
 
 class GenericButton
 {
-
     /**
      * @var \Magento\Backend\Block\Widget\Context
      */
@@ -55,5 +54,4 @@ class GenericButton
         $model = $this->feedback->create();
         return $model->load($this->getId())->getStatus();
     }
-
 }

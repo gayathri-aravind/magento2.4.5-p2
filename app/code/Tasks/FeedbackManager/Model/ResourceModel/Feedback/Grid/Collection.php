@@ -1,4 +1,5 @@
 <?php
+
 namespace Tasks\FeedbackManager\Model\ResourceModel\Feedback\Grid;
 
 use Magento\Framework\Api\Search\SearchResultInterface;
@@ -49,7 +50,7 @@ class Collection extends FeedbackCollection implements SearchResultInterface
     {
         return null;
     }
-    
+
     public function setSearchCriteria(
         \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria = null
     ) {
@@ -75,15 +76,15 @@ class Collection extends FeedbackCollection implements SearchResultInterface
     {
         $cgfTable = $this->getTable('customer_grid_flat');
         $this->getSelect()->joinLeft(
-            $cgfTable.' as cgf',
+            $cgfTable . ' as cgf',
             'main_table.user_id = cgf.entity_id',
             [
-                'user_name'=>'cgf.name'
+                'user_name' => 'cgf.name'
             ]
         );
         parent::_renderFiltersBefore();
     }
-    
+
     protected function _initSelect()
     {
         $this->addFilterToMap('user_name', 'cgf.name');

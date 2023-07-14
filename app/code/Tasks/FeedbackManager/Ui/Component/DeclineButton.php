@@ -6,7 +6,6 @@ use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
 class DeclineButton extends GenericButton implements ButtonProviderInterface
 {
-
     /**
      * Retrieve button-specified settings
      *
@@ -16,7 +15,8 @@ class DeclineButton extends GenericButton implements ButtonProviderInterface
     {
         $data = [];
         $status = $this->getStatus();
-        if(!$status || ($status === '1')) // Showing 'Decline' button for pending and approved statuses
+        // Showing 'Decline' button for pending and approved statuses
+        if (!$status || ($status === '1')) {
             $data = [
                 'label' => __('Decline'),
                 'class' => 'primary',
@@ -27,7 +27,7 @@ class DeclineButton extends GenericButton implements ButtonProviderInterface
                 'on_click' => sprintf("location.href = '%s';", $this->getDeclineUrl()),
                 'sort_order' => 20,
             ];
-
+        }
         return $data;
     }
 
@@ -38,5 +38,4 @@ class DeclineButton extends GenericButton implements ButtonProviderInterface
     {
         return $this->getUrl('*/*/decline', ['id' => $this->getId()]);
     }
-
 }
